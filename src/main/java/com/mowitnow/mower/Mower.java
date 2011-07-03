@@ -9,8 +9,8 @@ public class Mower {
 
 	private CardinalDirection direction;
 
-	public Mower(int x, int y, CardinalDirection direction) {
-		this.direction = direction;
+	public Mower(CardinalDirection initialDirection) {
+		this.direction = initialDirection;
 	}
 
 	public void turnRight() {
@@ -28,8 +28,7 @@ public class Mower {
 			direction = CardinalDirection.SOUTH;
 			break;
 		default:
-			throw new AssertionError("Unknown direction [" + direction
-					+ "] value");
+			throw new AssertionError("Unknown direction [" + direction + "]");
 		}
 	}
 
