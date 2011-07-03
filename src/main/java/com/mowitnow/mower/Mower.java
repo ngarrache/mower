@@ -14,16 +14,23 @@ public class Mower {
 	}
 
 	public void turnRight() {
-		if (direction == CardinalDirection.NORTH) {
+		switch (direction) {
+		case NORTH:
 			direction = CardinalDirection.WEST;
-		} else if (direction == CardinalDirection.EAST) {
+			break;
+		case EAST:
 			direction = CardinalDirection.NORTH;
-		} else if (direction == CardinalDirection.SOUTH) {
+			break;
+		case SOUTH:
 			direction = CardinalDirection.EAST;
-		} else if (direction == CardinalDirection.WEST) {
+			break;
+		case WEST:
 			direction = CardinalDirection.SOUTH;
+			break;
+		default:
+			throw new AssertionError("Unknown direction [" + direction
+					+ "] value");
 		}
-
 	}
 
 	public CardinalDirection getDirection() {
