@@ -12,6 +12,10 @@ public class Mower {
 	private CardinalDirection direction;
 
 	public Mower(int xCoordinate, int yCoordinate, CardinalDirection direction) {
+		if (xCoordinate < 0 || yCoordinate < 0) {
+			throw new IllegalArgumentException(
+					"xCoordinate and yCoordinate should be positives");
+		}
 		this.xCoordinate = xCoordinate;
 		this.yCoordinate = yCoordinate;
 		this.direction = direction;

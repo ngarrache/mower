@@ -155,4 +155,22 @@ public class MowerTest {
 		assertThat(mower.getDirection()).isEqualTo(CardinalDirection.NORTH);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void mower_XCoordinateIsNegative_ThrowException() {
+		// Arrange
+		// Act
+		new Mower(-1, 0, CardinalDirection.NORTH);
+
+		// Assert
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void mower_YCoordinateIsNegative_ThrowException() {
+		// Arrange
+		// Act
+		new Mower(0, -1, CardinalDirection.NORTH);
+
+		// Assert
+	}
+
 }
