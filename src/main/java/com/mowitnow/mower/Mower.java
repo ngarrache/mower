@@ -16,20 +16,40 @@ public class Mower {
 	public void turnRight() {
 		switch (direction) {
 		case NORTH:
-			direction = CardinalDirection.WEST;
-			break;
-		case EAST:
-			direction = CardinalDirection.NORTH;
-			break;
-		case SOUTH:
 			direction = CardinalDirection.EAST;
 			break;
-		case WEST:
+		case EAST:
 			direction = CardinalDirection.SOUTH;
+			break;
+		case SOUTH:
+			direction = CardinalDirection.WEST;
+			break;
+		case WEST:
+			direction = CardinalDirection.NORTH;
 			break;
 		default:
 			throw new AssertionError("Unknown direction [" + direction + "]");
 		}
+	}
+ 
+	public void turnLeft() {
+		switch (direction) {
+		case NORTH:
+			direction = CardinalDirection.WEST;
+			break;
+		case WEST:
+			direction = CardinalDirection.SOUTH;
+			break;
+		case SOUTH:
+			direction = CardinalDirection.EAST;
+			break;
+		case EAST:
+			direction = CardinalDirection.NORTH;
+			break;
+		default:
+			throw new AssertionError("Unknown direction [" + direction + "]");
+		}
+
 	}
 
 	public CardinalDirection getDirection() {
