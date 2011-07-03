@@ -7,10 +7,33 @@ package com.mowitnow.mower;
  */
 public class Mower {
 
+	private int xCoordinate;
+	private int yCoordinate;
 	private CardinalDirection direction;
 
-	public Mower(CardinalDirection initialDirection) {
-		this.direction = initialDirection;
+	public Mower(int xCoordinate, int yCoordinate, CardinalDirection direction) {
+		this.xCoordinate = xCoordinate;
+		this.yCoordinate = yCoordinate;
+		this.direction = direction;
+	}
+
+	public void proceedForward() {
+		switch (direction) {
+		case NORTH:
+			yCoordinate++;
+			break;
+		case EAST:
+			xCoordinate++;
+			break;
+		case SOUTH:
+			yCoordinate--;
+			break;
+		case WEST:
+			xCoordinate--;
+			break;
+		default:
+			throw new AssertionError("Unknown direction [" + direction + "]");
+		}
 	}
 
 	public void turnRight() {
@@ -31,7 +54,7 @@ public class Mower {
 			throw new AssertionError("Unknown direction [" + direction + "]");
 		}
 	}
- 
+
 	public void turnLeft() {
 		switch (direction) {
 		case NORTH:
@@ -49,7 +72,14 @@ public class Mower {
 		default:
 			throw new AssertionError("Unknown direction [" + direction + "]");
 		}
+	}
 
+	public int getXCoordinate() {
+		return xCoordinate;
+	}
+
+	public int getYCoordinate() {
+		return yCoordinate;
 	}
 
 	public CardinalDirection getDirection() {
