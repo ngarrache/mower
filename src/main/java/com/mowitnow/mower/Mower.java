@@ -8,6 +8,7 @@ package com.mowitnow.mower;
 public class Mower {
 
 	private int xCoordinate;
+
 	private int yCoordinate;
 	private CardinalDirection direction;
 
@@ -78,11 +79,11 @@ public class Mower {
 		}
 	}
 
-	public int getXCoordinate() {
+	public int getxCoordinate() {
 		return xCoordinate;
 	}
 
-	public int getYCoordinate() {
+	public int getyCoordinate() {
 		return yCoordinate;
 	}
 

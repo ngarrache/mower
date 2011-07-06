@@ -20,7 +20,7 @@ public class MowerTest {
 		mower.proceedForward();
 
 		// Assert
-		assertThat(mower.getYCoordinate()).isEqualTo(1);
+		assertThat(mower.getyCoordinate()).isEqualTo(1);
 	}
 
 	@Test
@@ -32,7 +32,7 @@ public class MowerTest {
 		mower.proceedForward();
 
 		// Assert
-		assertThat(mower.getXCoordinate()).isEqualTo(1);
+		assertThat(mower.getxCoordinate()).isEqualTo(1);
 	}
 
 	@Test
@@ -44,7 +44,7 @@ public class MowerTest {
 		mower.proceedForward();
 
 		// Assert
-		assertThat(mower.getYCoordinate()).isEqualTo(-1);
+		assertThat(mower.getyCoordinate()).isEqualTo(-1);
 	}
 
 	@Test
@@ -56,7 +56,7 @@ public class MowerTest {
 		mower.proceedForward();
 
 		// Assert
-		assertThat(mower.getXCoordinate()).isEqualTo(-1);
+		assertThat(mower.getxCoordinate()).isEqualTo(-1);
 	}
 
 	@Test
@@ -167,7 +167,7 @@ public class MowerTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void mower_YCoordinateIsNegative_ThrowException() {
 		// Arrange
-		// Act
+		// Act 
 		new Mower(0, -1, CardinalDirection.NORTH);
 
 		// Assert
