@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MowersController {
 
-	private final static Logger LOGGER = LoggerFactory
+	private static final Logger LOGGER = LoggerFactory
 			.getLogger(MowersController.class);
 
 	private int maxXCoordinate;
@@ -55,11 +55,9 @@ public class MowersController {
 						+ "]");
 			}
 		}
-		LOGGER.info("Mower finished work: " + mower.getxCoordinate() + ","
-				+ mower.getyCoordinate() + " " + mower.getDirection());
+		LOGGER.info("Mower finished work: {},{} {}", new Object[]{mower.getxCoordinate(),
+				mower.getyCoordinate(), mower.getDirection()});
 	}
-	
-	
 
 	public int getMaxXCoordinate() {
 		return maxXCoordinate;
