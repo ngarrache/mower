@@ -5,6 +5,6 @@ package com.mowitnow.mower;
  * 
  * @since 3 juil. 2011
  */
-public enum CardinalDirection {
+public enum Orientation {
 	NORTH, EAST, SOUTH, WEST;
 }

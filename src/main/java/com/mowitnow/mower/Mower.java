@@ -10,9 +10,9 @@ public class Mower {
 	private int xCoordinate;
 
 	private int yCoordinate;
-	private CardinalDirection direction;
+	private Orientation direction;
 
-	public Mower(int xCoordinate, int yCoordinate, CardinalDirection direction) {
+	public Mower(int xCoordinate, int yCoordinate, Orientation direction) {
 		if (xCoordinate < 0 || yCoordinate < 0) {
 			throw new IllegalArgumentException(
 					"xCoordinate and yCoordinate should be positives");
@@ -44,16 +44,16 @@ public class Mower {
 	public void turnRight() {
 		switch (direction) {
 		case NORTH:
-			direction = CardinalDirection.EAST;
+			direction = Orientation.EAST;
 			break;
 		case EAST:
-			direction = CardinalDirection.SOUTH;
+			direction = Orientation.SOUTH;
 			break;
 		case SOUTH:
-			direction = CardinalDirection.WEST;
+			direction = Orientation.WEST;
 			break;
 		case WEST:
-			direction = CardinalDirection.NORTH;
+			direction = Orientation.NORTH;
 			break;
 		default:
 			throw new AssertionError("Unknown direction [" + direction + "]");
@@ -63,16 +63,16 @@ public class Mower {
 	public void turnLeft() {
 		switch (direction) {
 		case NORTH:
-			direction = CardinalDirection.WEST;
+			direction = Orientation.WEST;
 			break;
 		case WEST:
-			direction = CardinalDirection.SOUTH;
+			direction = Orientation.SOUTH;
 			break;
 		case SOUTH:
-			direction = CardinalDirection.EAST;
+			direction = Orientation.EAST;
 			break;
 		case EAST:
-			direction = CardinalDirection.NORTH;
+			direction = Orientation.NORTH;
 			break;
 		default:
 			throw new AssertionError("Unknown direction [" + direction + "]");
@@ -87,7 +87,7 @@ public class Mower {
 		return yCoordinate;
 	}
 
-	public CardinalDirection getDirection() {
+	public Orientation getDirection() {
 		return direction;
 	}
 

@@ -65,7 +65,7 @@ public class MowersControllerTest {
 		// Arrange
 		// Act
 		controller.deployMower(X_COORDINATE, Y_COORDINATE,
-				CardinalDirection.NORTH);
+				Orientation.NORTH);
 
 		// Assert
 		assertThat(controller.getMowers()).hasSize(1);
@@ -74,7 +74,7 @@ public class MowersControllerTest {
 		assertThat(controller.getMowers()).onProperty("yCoordinate")
 				.containsExactly(Y_COORDINATE);
 		assertThat(controller.getMowers()).onProperty("direction")
-				.containsExactly(CardinalDirection.NORTH);
+				.containsExactly(Orientation.NORTH);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -82,7 +82,7 @@ public class MowersControllerTest {
 		// Arrange
 		// Act
 		controller.deployMower(NEGATIVE_MAX_X_COORDINATE, Y_COORDINATE,
-				CardinalDirection.NORTH);
+				Orientation.NORTH);
 		// Assert
 	}
 
@@ -96,7 +96,7 @@ public class MowersControllerTest {
 		Mower mowerMock = mock(Mower.class);
 		when(mowerMock.getxCoordinate()).thenReturn(1);
 		when(mowerMock.getyCoordinate()).thenReturn(0);
-		when(mowerMock.getDirection()).thenReturn(CardinalDirection.NORTH);
+		when(mowerMock.getDirection()).thenReturn(Orientation.NORTH);
 
 		// Act
 		controller.runMower(mowerMock, instructions);

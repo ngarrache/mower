@@ -30,7 +30,7 @@ public class MowersController {
 		this.maxYCoordinate = maxYCoordinate;
 	}
 
-	public void deployMower(int x, int y, CardinalDirection orientation) {
+	public void deployMower(int x, int y, Orientation orientation) {
 		if (x < 0 || y < 0) {
 			throw new IllegalArgumentException("x and y should be positives");
 		}
