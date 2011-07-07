@@ -1,13 +1,13 @@
 package com.mowitnow.mower;
 
+import static com.mowitnow.mower.Instruction.*;
 import static org.fest.assertions.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -16,13 +16,20 @@ import org.junit.Test;
  * @since 6 juil. 2011
  */
 public class ProgramTest {
+	private Program program;
+	
+	@Before
+	public void setUp() throws Exception {
+		BufferedReader bufferedReaderStub = mock(BufferedReader.class);
+		when(bufferedReaderStub.readLine()).thenReturn("5 5")
+				.thenReturn("1 2 N").thenReturn("GAGAGAGAA")
+				.thenReturn("3 3 E").thenReturn("AADAADADDA").thenReturn(null);
+		program = new Program(bufferedReaderStub);
+	}
 
 	@Test
-	public void getMaxX_IntFound_ReturnX() throws IOException {
+	public void getMaxX_IntFound_ReturnX() {
 		// Arrange
-		BufferedReader bufferedReaderStub = mock(BufferedReader.class);
-		when(bufferedReaderStub.readLine()).thenReturn("5 5");
-		Program program = new Program(bufferedReaderStub);
 
 		// Act
 		int x = program.getMaxX();
@@ -32,11 +39,8 @@ public class ProgramTest {
 	}
 
 	@Test
-	public void getMaxY_IntFound_ReturnY() throws IOException {
+	public void getMaxY_IntFound_ReturnY() {
 		// Arrange
-		BufferedReader bufferedReaderStub = mock(BufferedReader.class);
-		when(bufferedReaderStub.readLine()).thenReturn("5 5");
-		Program program = new Program(bufferedReaderStub);
 
 		// Act
 		int y = program.getMaxY();
@@ -46,13 +50,8 @@ public class ProgramTest {
 	}
 
 	@Test
-	public void getInitialMowersPositionAndOrientation_FindWellFormated_ReturnInfoList()
-			throws Exception {
+	public void getInitialMowersPositionAndOrientation_FindWellFormated_ReturnInfoList() {
 		// Arrange
-		BufferedReader bufferedReaderStub = mock(BufferedReader.class);
-		when(bufferedReaderStub.readLine()).thenReturn("5 5")
-				.thenReturn("1 2 N").thenReturn("GAGAGAGAA").thenReturn("3 3 E").thenReturn(null);
-		Program program = new Program(bufferedReaderStub);
 
 		// Act
 		List<PositionAndOrientation> result = program
@@ -65,4 +64,15 @@ public class ProgramTest {
 				Orientation.NORTH, Orientation.EAST);
 	}
 
+	@Test
+	public void getNextInstructions_FindWellFormated_ReturnInstructions() {
+		// Arrange
+
+		// Act
+		List<Instruction> instructions = program.getNextInstructions();
+
+		// Assert
+		assertThat(instructions).containsExactly(LEFT, FORWARD, LEFT, FORWARD,
+				LEFT, FORWARD, LEFT, FORWARD, FORWARD); // GAGAGAGAA
+	}
 }
