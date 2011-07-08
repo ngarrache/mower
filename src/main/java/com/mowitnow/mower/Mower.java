@@ -8,25 +8,14 @@ import static com.mowitnow.mower.Orientation.*;
  * @since 3 juil. 2011
  */
 public class Mower {
+
 	private Position position;
 
-	/**
-	 * @param x
-	 *            positive int
-	 * @param y
-	 *            positive int
-	 * @param orientation
-	 *            must be not null
-	 */
-	public Mower(int x, int y, Orientation orientation) {
-		if (x < 0 || y < 0) {
-			throw new IllegalArgumentException("x [" + x + "] and y [" + y
-					+ "] must be positives");
+	public Mower(Position position) {
+		if (position == null) {
+			throw new IllegalArgumentException("position must be not null");
 		}
-		if (orientation == null) {
-			throw new IllegalArgumentException("orientation must be not null");
-		}
-		position = new Position(x, y, orientation);
+		this.position = position;
 	}
 
 	public void proceedForward() {
@@ -99,6 +88,15 @@ public class Mower {
 
 	public Orientation getOrientation() {
 		return position.getOrientation();
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
+	@Override
+	public String toString() {
+		return "Mower at (" + getX() + "," + getY() + ") " + getOrientation();
 	}
 
 }

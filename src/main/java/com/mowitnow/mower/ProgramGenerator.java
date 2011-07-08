@@ -20,6 +20,7 @@ import com.mowitnow.mower.exception.InvalidFileFormatException;
  * @since 6 juil. 2011
  */
 public class ProgramGenerator {
+	
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(ProgramGenerator.class);
 
@@ -139,16 +140,11 @@ public class ProgramGenerator {
 			String positionAndOrientationLine, String instructionsLine)
 			throws InvalidFileFormatException {
 		LOGGER.debug("Line read: {}", positionAndOrientationLine);
-		LOGGER.debug("Line read: {}", instructionsLine);
-		if (instructionsLine == null) {
-			throw new InvalidFileFormatException(
-					"Invalid instructions string [" + instructionsLine + "]");
-		}
 
 		String[] xyo = positionAndOrientationLine.split(" ");
 		if (xyo.length != 3) {
 			throw new InvalidFileFormatException(
-					"Invalid position//orientation string ["
+					"Invalid position string ["
 							+ positionAndOrientationLine + "]");
 		}
 		Orientation orientation = getOrientation(xyo[2]);
@@ -158,9 +154,16 @@ public class ProgramGenerator {
 					Integer.parseInt(xyo[1]), orientation);
 		} catch (NumberFormatException e) {
 			throw new InvalidFileFormatException(
-					"Invalid position//orientation string ["
+					"Invalid position string ["
 							+ positionAndOrientationLine + "]", e);
 		}
+
+		if (instructionsLine == null) {
+			throw new InvalidFileFormatException(
+					"Invalid instructions string [" + instructionsLine + "]");
+		}
+
+		LOGGER.debug("Line read: {}", instructionsLine);
 
 		List<Instruction> instructions = new ArrayList<Instruction>();
 		char[] instructionArray = instructionsLine.toCharArray();
