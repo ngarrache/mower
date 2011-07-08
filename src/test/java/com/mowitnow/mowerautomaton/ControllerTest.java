@@ -1,6 +1,6 @@
-package com.mowitnow.mower;
+package com.mowitnow.mowerautomaton;
 
-import static com.mowitnow.mower.Orientation.*;
+import static com.mowitnow.mowerautomaton.model.Orientation.*;
 import static org.fest.assertions.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -10,6 +10,11 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
+
+import com.mowitnow.mowerautomaton.Controller;
+import com.mowitnow.mowerautomaton.model.Instruction;
+import com.mowitnow.mowerautomaton.model.Mower;
+import com.mowitnow.mowerautomaton.model.Position;
 
 /**
  * @author Nizar Garrache

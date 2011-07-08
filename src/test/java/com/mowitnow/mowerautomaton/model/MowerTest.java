@@ -1,9 +1,12 @@
-package com.mowitnow.mower;
+package com.mowitnow.mowerautomaton.model;
 
-import static com.mowitnow.mower.Orientation.*;
+import static com.mowitnow.mowerautomaton.model.Orientation.*;
 import static org.fest.assertions.Assertions.*;
 
 import org.junit.Test;
+
+import com.mowitnow.mowerautomaton.model.Mower;
+import com.mowitnow.mowerautomaton.model.Position;
 
 /**
  * @author Nizar Garrache

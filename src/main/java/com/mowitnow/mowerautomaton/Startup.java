@@ -1,11 +1,12 @@
-package com.mowitnow.mower;
+package com.mowitnow.mowerautomaton;
 
 import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mowitnow.mower.exception.InvalidFileFormatException;
+import com.mowitnow.mowerautomaton.exception.InvalidFileFormatException;
+import com.mowitnow.mowerautomaton.model.Program;
 
 /**
  * @author Nizar Garrache

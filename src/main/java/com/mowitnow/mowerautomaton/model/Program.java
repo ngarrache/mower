@@ -1,4 +1,4 @@
-package com.mowitnow.mower;
+package com.mowitnow.mowerautomaton.model;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -19,8 +19,7 @@ public class Program {
 		commands = new LinkedHashMap<Position, List<Instruction>>();
 	}
 
-	public void addCommand(Position po,
-			List<Instruction> instructions) {
+	public void addCommand(Position po, List<Instruction> instructions) {
 		commands.put(po, instructions);
 	}
 

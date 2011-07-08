@@ -1,4 +1,4 @@
-package com.mowitnow.mower.exception;
+package com.mowitnow.mowerautomaton.exception;
 
 /**
  * @author Nizar Garrache

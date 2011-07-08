@@ -1,6 +1,6 @@
-package com.mowitnow.mower;
+package com.mowitnow.mowerautomaton.model;
 
-import static com.mowitnow.mower.Orientation.*;
+import static com.mowitnow.mowerautomaton.model.Orientation.*;
 
 /**
  * @author Nizar Garrache

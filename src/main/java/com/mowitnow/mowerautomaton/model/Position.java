@@ -1,4 +1,4 @@
-package com.mowitnow.mower;
+package com.mowitnow.mowerautomaton.model;
 
 /**
  * @author Nizar Garrache

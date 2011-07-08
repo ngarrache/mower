@@ -1,7 +1,7 @@
-package com.mowitnow.mower;
+package com.mowitnow.mowerautomaton;
 
-import static com.mowitnow.mower.Instruction.*;
-import static com.mowitnow.mower.Orientation.*;
+import static com.mowitnow.mowerautomaton.model.Instruction.*;
+import static com.mowitnow.mowerautomaton.model.Orientation.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,7 +12,11 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mowitnow.mower.exception.InvalidFileFormatException;
+import com.mowitnow.mowerautomaton.exception.InvalidFileFormatException;
+import com.mowitnow.mowerautomaton.model.Instruction;
+import com.mowitnow.mowerautomaton.model.Orientation;
+import com.mowitnow.mowerautomaton.model.Position;
+import com.mowitnow.mowerautomaton.model.Program;
 
 /**
  * @author Nizar Garrache
