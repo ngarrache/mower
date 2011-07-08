@@ -43,15 +43,19 @@ public class ControllerTest {
 	}
 
 	@Test
-	public void runMower_RFL_MoveMower() {
+	public void runMower_InputRFL_MoveMower() {
 		List<Instruction> instructions = new ArrayList<Instruction>();
 		instructions.add(Instruction.RIGHT);
 		instructions.add(Instruction.FORWARD);
 		instructions.add(Instruction.LEFT);
 		Mower mowerMock = mock(Mower.class);
-		when(mowerMock.getX()).thenReturn(1);
+		when(mowerMock.getOrientation()).thenReturn(NORTH);
+		when(mowerMock.getX()).thenReturn(0);
 		when(mowerMock.getY()).thenReturn(0);
-		when(mowerMock.getOrientation()).thenReturn(Orientation.NORTH);
+		controller.setMaxXForTesting(1);
+		controller.setMaxYForTesting(1);
+		controller.setGridForTesting(new boolean[][] { { false, false },
+				{ false, false } });
 
 		controller.runMower(mowerMock, instructions);
 
@@ -62,12 +66,30 @@ public class ControllerTest {
 	}
 
 	@Test
-	public void doWork_Ok_DeployAndRunMowers() {
-		// Arrange
+	public void runMower_WillExceedMaxX_DontMoveMower() {
+		List<Instruction> instructions = new ArrayList<Instruction>();
+		instructions.add(Instruction.RIGHT);
+		instructions.add(Instruction.FORWARD);
+		instructions.add(Instruction.LEFT);
+		Mower mowerMock = mock(Mower.class);
+		when(mowerMock.getOrientation()).thenReturn(NORTH);
+		when(mowerMock.getX()).thenReturn(0);
+		when(mowerMock.getY()).thenReturn(1);
+		controller.setMaxXForTesting(1);
+		controller.setMaxYForTesting(1);
+		controller.setGridForTesting(new boolean[][] { { false, false },
+				{ false, false} });
 
-		// Act
+		controller.runMower(mowerMock, instructions);
 
-		// Assert
+		InOrder inOrder = inOrder(mowerMock);
+		inOrder.verify(mowerMock).turnRight();
+		verify(mowerMock, never()).proceedForward();
+		inOrder.verify(mowerMock).turnLeft();
+	}
+
+	@Test
+	public void runMower() {
 
 	}
 

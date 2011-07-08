@@ -18,8 +18,15 @@ public class Controller {
 			.getLogger(Controller.class);
 
 	private List<Mower> mowers = new ArrayList<Mower>();
+	private int maxX;
+	private int maxY;
+	private boolean[][] grid;
 
 	public void execute(Program program) {
+		maxX = program.getMaxX();
+		maxY = program.getMaxY();
+		grid = new boolean[maxX + 1][maxY + 1];
+
 		Iterator<Position> positionsIterator = program
 				.getPositionAndOrientations().iterator();
 		while (positionsIterator.hasNext()) {
@@ -52,7 +59,10 @@ public class Controller {
 		for (Instruction instruction : instructions) {
 			switch (instruction) {
 			case FORWARD:
-				mower.proceedForward();
+				if (canMoveMower(mower)) {
+					mower.proceedForward();
+					grid[mower.getX()][mower.getY()] = true;
+				}
 				break;
 			case RIGHT:
 				mower.turnRight();
@@ -69,8 +79,55 @@ public class Controller {
 		LOGGER.info(mower.toString());
 	}
 
+	/**
+	 * Check for border exceed and mowers overlap
+	 * 
+	 * @param mower
+	 * @return
+	 */
+	private boolean canMoveMower(Mower mower) {
+		switch (mower.getOrientation()) {
+		case NORTH:
+			if (mower.getY() < maxY && !grid[mower.getX()][mower.getY() + 1]) {
+				return true;
+			}
+			break;
+		case EAST:
+			if (mower.getX() < maxX && !grid[mower.getX() + 1][mower.getY()]) {
+				return true;
+			}
+			break;
+		case SOUTH:
+			if (mower.getY() > 0 && !grid[mower.getX()][mower.getY() - 1]) {
+				return true;
+			}
+			break;
+		case WEST:
+			if (mower.getY() > 0 && !grid[mower.getX() - 1][mower.getY()]) {
+				return true;
+			}
+			break;
+		default:
+			throw new AssertionError("Unknown orientation ["
+					+ mower.getOrientation() + "]");
+		}
+		return false;
+	}
+
 	protected List<Mower> getMowers() {
 		return mowers;
+	}
+
+	protected void setMaxXForTesting(int maxX) {
+		this.maxX = maxX;
+	}
+
+	protected void setMaxYForTesting(int maxY) {
+		this.maxY = maxY;
+	}
+
+	protected void setGridForTesting(boolean[][] grid) {
+		this.grid = grid;
 	}
 
 }
