@@ -5,12 +5,12 @@ package com.mowitnow.mower;
  * 
  * @since 6 juil. 2011
  */
-public class PositionAndOrientation {
+public class Position {
 	private int x;
 	private int y;
 	private Orientation orientation;
 
-	public PositionAndOrientation(int x, int y, Orientation orientation) {
+	public Position(int x, int y, Orientation orientation) {
 		if (x < 0 || y < 0) {
 			throw new IllegalArgumentException("x[" + x + "] and y[" + y
 					+ "] must be positives");
@@ -20,8 +20,24 @@ public class PositionAndOrientation {
 		this.orientation = orientation;
 	}
 
+	public void incrementX() {
+		x++;
+	}
+
+	public void decrementX() {
+		x--;
+	}
+
 	public int getX() {
 		return x;
+	}
+
+	public void incrementY() {
+		y++;
+	}
+
+	public void decrementY() {
+		y--;
 	}
 
 	public int getY() {
@@ -30,6 +46,10 @@ public class PositionAndOrientation {
 
 	public Orientation getOrientation() {
 		return orientation;
+	}
+
+	public void setOrientation(Orientation orientation) {
+		this.orientation = orientation;
 	}
 
 	@Override
@@ -49,7 +69,7 @@ public class PositionAndOrientation {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PositionAndOrientation other = (PositionAndOrientation) obj;
+		Position other = (Position) obj;
 		if (x != other.x)
 			return false;
 		if (y != other.y)

@@ -69,11 +69,11 @@ public class MowersControllerTest {
 
 		// Assert
 		assertThat(controller.getMowers()).hasSize(1);
-		assertThat(controller.getMowers()).onProperty("xCoordinate")
+		assertThat(controller.getMowers()).onProperty("x")
 				.containsExactly(X_COORDINATE);
-		assertThat(controller.getMowers()).onProperty("yCoordinate")
+		assertThat(controller.getMowers()).onProperty("y")
 				.containsExactly(Y_COORDINATE);
-		assertThat(controller.getMowers()).onProperty("direction")
+		assertThat(controller.getMowers()).onProperty("orientation")
 				.containsExactly(Orientation.NORTH);
 	}
 
@@ -94,9 +94,9 @@ public class MowersControllerTest {
 		instructions.add(Instruction.FORWARD);
 		instructions.add(Instruction.LEFT);
 		Mower mowerMock = mock(Mower.class);
-		when(mowerMock.getxCoordinate()).thenReturn(1);
-		when(mowerMock.getyCoordinate()).thenReturn(0);
-		when(mowerMock.getDirection()).thenReturn(Orientation.NORTH);
+		when(mowerMock.getX()).thenReturn(1);
+		when(mowerMock.getY()).thenReturn(0);
+		when(mowerMock.getOrientation()).thenReturn(Orientation.NORTH);
 
 		// Act
 		controller.runMower(mowerMock, instructions);

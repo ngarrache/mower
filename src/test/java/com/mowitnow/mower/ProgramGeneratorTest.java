@@ -129,7 +129,7 @@ public class ProgramGeneratorTest {
 			throws InvalidFileFormatException {
 		programGenerator.addCommand(program, "1 2 N", "GAGAGAGAA");
 
-		PositionAndOrientation po1 = new PositionAndOrientation(1, 2, NORTH);
+		Position po1 = new Position(1, 2, NORTH);
 		assertThat(program.getPositionAndOrientations()).containsOnly(po1);
 		assertThat(program.getInstructionsByMower(po1)).containsExactly(LEFT,
 				FORWARD, LEFT, FORWARD, LEFT, FORWARD, LEFT, FORWARD, FORWARD);
@@ -148,8 +148,8 @@ public class ProgramGeneratorTest {
 
 		assertThat(program.getMaxX()).isEqualTo(5);
 		assertThat(program.getMaxY()).isEqualTo(5);
-		PositionAndOrientation po1 = new PositionAndOrientation(1, 2, NORTH);
-		PositionAndOrientation po2 = new PositionAndOrientation(3, 3, EAST);
+		Position po1 = new Position(1, 2, NORTH);
+		Position po2 = new Position(3, 3, EAST);
 		assertThat(program.getPositionAndOrientations()).containsOnly(po1, po2);
 		// check for GAGAGAGAA
 		assertThat(program.getInstructionsByMower(po1)).containsExactly(LEFT,

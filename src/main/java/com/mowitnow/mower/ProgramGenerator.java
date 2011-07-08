@@ -152,9 +152,9 @@ public class ProgramGenerator {
 							+ positionAndOrientationLine + "]");
 		}
 		Orientation orientation = getOrientation(xyo[2]);
-		PositionAndOrientation po;
+		Position po;
 		try {
-			po = new PositionAndOrientation(Integer.parseInt(xyo[0]),
+			po = new Position(Integer.parseInt(xyo[0]),
 					Integer.parseInt(xyo[1]), orientation);
 		} catch (NumberFormatException e) {
 			throw new InvalidFileFormatException(

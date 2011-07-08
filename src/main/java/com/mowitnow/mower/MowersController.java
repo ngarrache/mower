@@ -55,8 +55,9 @@ public class MowersController {
 						+ "]");
 			}
 		}
-		LOGGER.info("Mower finished work: {},{} {}", new Object[]{mower.getxCoordinate(),
-				mower.getyCoordinate(), mower.getDirection()});
+		LOGGER.info("Mower finished work: {},{} {}",
+				new Object[] { mower.getX(), mower.getY(),
+						mower.getOrientation() });
 	}
 
 	public int getMaxXCoordinate() {

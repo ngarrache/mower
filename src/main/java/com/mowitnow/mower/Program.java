@@ -13,22 +13,22 @@ import java.util.Set;
 public class Program {
 	private int maxX;
 	private int maxY;
-	private Map<PositionAndOrientation, List<Instruction>> commands;
+	private Map<Position, List<Instruction>> commands;
 
 	public Program() {
-		commands = new LinkedHashMap<PositionAndOrientation, List<Instruction>>();
+		commands = new LinkedHashMap<Position, List<Instruction>>();
 	}
 
-	public void addCommand(PositionAndOrientation po,
+	public void addCommand(Position po,
 			List<Instruction> instructions) {
 		commands.put(po, instructions);
 	}
 
-	public Set<PositionAndOrientation> getPositionAndOrientations() {
+	public Set<Position> getPositionAndOrientations() {
 		return commands.keySet();
 	}
 
-	public List<Instruction> getInstructionsByMower(PositionAndOrientation po) {
+	public List<Instruction> getInstructionsByMower(Position po) {
 		return commands.get(po);
 	}
 

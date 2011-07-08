@@ -1,94 +1,104 @@
 package com.mowitnow.mower;
 
+import static com.mowitnow.mower.Orientation.*;
+
 /**
  * @author Nizar Garrache
  * 
  * @since 3 juil. 2011
  */
 public class Mower {
+	private Position position;
 
-	private int xCoordinate;
-
-	private int yCoordinate;
-	private Orientation direction;
-
-	public Mower(int xCoordinate, int yCoordinate, Orientation direction) {
-		if (xCoordinate < 0 || yCoordinate < 0) {
-			throw new IllegalArgumentException(
-					"xCoordinate and yCoordinate should be positives");
+	/**
+	 * @param x
+	 *            positive int
+	 * @param y
+	 *            positive int
+	 * @param orientation
+	 *            must be not null
+	 */
+	public Mower(int x, int y, Orientation orientation) {
+		if (x < 0 || y < 0) {
+			throw new IllegalArgumentException("x [" + x + "] and y [" + y
+					+ "] must be positives");
 		}
-		this.xCoordinate = xCoordinate;
-		this.yCoordinate = yCoordinate;
-		this.direction = direction;
+		if (orientation == null) {
+			throw new IllegalArgumentException("orientation must be not null");
+		}
+		position = new Position(x, y, orientation);
 	}
 
 	public void proceedForward() {
-		switch (direction) {
+		switch (position.getOrientation()) {
 		case NORTH:
-			yCoordinate++;
+			position.incrementY();
 			break;
 		case EAST:
-			xCoordinate++;
+			position.incrementX();
 			break;
 		case SOUTH:
-			yCoordinate--;
+			position.decrementY();
 			break;
 		case WEST:
-			xCoordinate--;
+			position.decrementX();
 			break;
 		default:
-			throw new AssertionError("Unknown direction [" + direction + "]");
+			throw new AssertionError("Unknown orientation ["
+					+ position.getOrientation() + "]");
 		}
 	}
 
 	public void turnRight() {
-		switch (direction) {
+		switch (position.getOrientation()) {
 		case NORTH:
-			direction = Orientation.EAST;
+			position.setOrientation(EAST);
 			break;
 		case EAST:
-			direction = Orientation.SOUTH;
+			position.setOrientation(SOUTH);
 			break;
 		case SOUTH:
-			direction = Orientation.WEST;
+			position.setOrientation(WEST);
 			break;
 		case WEST:
-			direction = Orientation.NORTH;
+			position.setOrientation(NORTH);
 			break;
 		default:
-			throw new AssertionError("Unknown direction [" + direction + "]");
+			throw new AssertionError("Unknown orientation ["
+					+ position.getOrientation() + "]");
 		}
 	}
 
 	public void turnLeft() {
-		switch (direction) {
+		switch (position.getOrientation()) {
 		case NORTH:
-			direction = Orientation.WEST;
+			position.setOrientation(WEST);
 			break;
 		case WEST:
-			direction = Orientation.SOUTH;
+			position.setOrientation(SOUTH);
 			break;
 		case SOUTH:
-			direction = Orientation.EAST;
+			position.setOrientation(EAST);
 			break;
 		case EAST:
-			direction = Orientation.NORTH;
+			position.setOrientation(NORTH);
 			break;
 		default:
-			throw new AssertionError("Unknown direction [" + direction + "]");
+			throw new AssertionError("Unknown orientation ["
+					+ position.getOrientation() + "]");
 		}
 	}
 
-	public int getxCoordinate() {
-		return xCoordinate;
+	public int getX() {
+		return position.getX();
 	}
 
-	public int getyCoordinate() {
-		return yCoordinate;
+	public int getY() {
+		return position.getY();
 	}
 
-	public Orientation getDirection() {
-		return direction;
+	public Orientation getOrientation() {
+		return position.getOrientation();
 	}
 
 }
