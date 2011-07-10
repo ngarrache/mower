@@ -15,6 +15,9 @@ public class Position {
 			throw new IllegalArgumentException("x[" + x + "] and y[" + y
 					+ "] must be positives");
 		}
+		if (orientation == null) {
+			throw new IllegalArgumentException("orientation must be not null");
+		}
 		this.x = x;
 		this.y = y;
 		this.orientation = orientation;

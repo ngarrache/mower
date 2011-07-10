@@ -33,7 +33,7 @@ public class Controller {
 		grid = new boolean[maxX + 1][maxY + 1];
 
 		Iterator<Position> positionsIterator = program
-				.getPositionAndOrientations().iterator();
+				.getPositions().iterator();
 		while (positionsIterator.hasNext()) {
 			deployMower(positionsIterator.next());
 		}

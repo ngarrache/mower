@@ -23,7 +23,7 @@ public class Program {
 		commands.put(po, instructions);
 	}
 
-	public Set<Position> getPositionAndOrientations() {
+	public Set<Position> getPositions() {
 		return commands.keySet();
 	}
 

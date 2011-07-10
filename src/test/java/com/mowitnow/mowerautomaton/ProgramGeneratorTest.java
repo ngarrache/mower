@@ -134,7 +134,7 @@ public class ProgramGeneratorTest {
 		programGenerator.addCommand(program, "1 2 N", "GAGAGAGAA");
 
 		Position po1 = new Position(1, 2, NORTH);
-		assertThat(program.getPositionAndOrientations()).containsOnly(po1);
+		assertThat(program.getPositions()).containsOnly(po1);
 		assertThat(program.getInstructionsByMower(po1)).containsExactly(LEFT,
 				FORWARD, LEFT, FORWARD, LEFT, FORWARD, LEFT, FORWARD, FORWARD);
 	}
@@ -154,7 +154,7 @@ public class ProgramGeneratorTest {
 		assertThat(program.getMaxY()).isEqualTo(5);
 		Position po1 = new Position(1, 2, NORTH);
 		Position po2 = new Position(3, 3, EAST);
-		assertThat(program.getPositionAndOrientations()).containsOnly(po1, po2);
+		assertThat(program.getPositions()).containsOnly(po1, po2);
 		// check for GAGAGAGAA
 		assertThat(program.getInstructionsByMower(po1)).containsExactly(LEFT,
 				FORWARD, LEFT, FORWARD, LEFT, FORWARD, LEFT, FORWARD, FORWARD);
